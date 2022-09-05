@@ -13,6 +13,12 @@ export class CatsRepository {
     return user;
   }
 
+  async findCatByIdWithoutPassword(catId: string): Promise<Cat | null> {
+    // 해당하는 필드 중 password를 제외하고 가져온다. (원하는 것만 가져오려면 email name )
+    const cat = await this.catModel.findById(catId).select('-password');
+    return cat;
+  }
+
   async existsByEmail(email: string): Promise<boolean> {
     const result: any = await this.catModel.exists({ email });
     return result;
