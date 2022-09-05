@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
+import { AuthModule } from './auth/auth.module';
 import mongoose from 'mongoose';
 
 @Module({
@@ -15,6 +16,7 @@ import mongoose from 'mongoose';
       useUnifiedTopology: true,
     }),
     CatsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
